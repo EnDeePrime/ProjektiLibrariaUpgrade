@@ -1,0 +1,978 @@
+<?php 
+session_start();
+
+# Database Connection File
+include "NEWPHP/db_conn.php";
+
+# Book helper function
+include "NEWPHP/php/func-book.php";
+$books = get_all_books($conn);
+
+# author helper function
+include "NEWPHP/php/func-author.php";
+$authors = get_all_author($conn);
+
+# Category helper function
+include "NEWPHP/php/func-category.php";
+$categories = get_all_categories($conn);
+
+ ?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      
+    </style>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Store Website</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+      <!-- bootstrap 5 CDN-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+<!-- bootstrap 5 Js bundle CDN-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="NEWPHP\style.css">
+
+  </head>
+  <body>
+    
+    <section id="Home">
+      <nav id="navbar">
+        <div class="logo">
+        
+          <a class="logo" href="#">
+          <img src="image/logo.png" alt="">KS-Furniture</a>
+        </div>
+        
+    
+        <ul class="nav-items">
+
+            <ul2>
+               <li1><div class="dropdown3">
+                <span class="dropbtn3">My Account</span>
+                <div class="dropdown3-content">
+                  <div class="card">
+                    <div class="card-body login-form">
+                      <h5>Login</h5>
+                      <form method="post" action="login.php">
+                        <div class="mb-3">
+                            <label for="username-dropdown3">Username</label>
+                            <input type="text" id="username-dropdown" name="username" placeholder="Enter your username">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="password-dropdown3">Password</label>
+                            <input type="password" id="password-dropdown3" name="password" placeholder="Enter your password">
+                        </div>
+                        <button type="submit">Sign in</button>
+                    </form>
+                    </div>
+                  </div>
+                </div>
+              </div> </li1>
+               <li1><div class="dropdown1">
+                <button class="dropbtn1">Location
+                  
+                </button>
+                <div class="dropdown1-content">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2934.4627201470985!2d21.15214808568595!3d42.651548896824316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13549eec30b18cd1%3A0x238cfa3986cd3829!2sEducational%20Centre%20Kosova!5e0!3m2!1sen!2s!4v1703182378390!5m2!1sen!2s" width="420" height="315" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+              </div> 
+              </li1>
+               <li1><a href="#">Get A Library Card</a></li1>
+              <li1> <a id="EmailS">Get Email Updates</a></li1>
+             
+             </form>
+ <!--temporary-->
+ 
+
+
+ <div class="dropdown">
+  <button class="dropbtn">Quick Navigate
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-content">
+    <li><a  href="#Home">Top</a></li>
+   
+    <li><a  href="#Arrivals">Arrivals</a></li>
+    <li><a  href="#Reviews">Reviews</a></li>
+    <li><a  href="#Blog">Blog</a></li>
+  </div>
+</div> 
+<!--Above this temporary alteration dropdown button-->
+
+</ul2>
+<ul3><div class="Shop">
+  
+  <li3><a href="#" id="shopId">Shop</a></li3>
+
+</div>
+</ul3>
+
+           
+           </nav>
+      <!--ND Alteration Top of Navbar--->
+      
+  
+      <div class="main">
+        <div class="main_tag">
+          <h1>WELCOME TO<br /><span>Our Library</span></h1>
+
+          <p>
+            Welcome to Libraria-KS a literary sanctuary where stories
+            unfold and reading becomes an immersive journey.Our curated
+            collection spans genres and eras,offering something for every
+            reader.Dive into our blog for insightful reviews and author
+            interviews,and explore our latest arrivals that promise to ignite
+            your curiosity.Libraria-KS is more than a bookshop it's a
+            community of passionate readers celebrating the joy of
+            storytelling.Join us on this literary adventure welcome to your home
+            for all things books!
+          </p>
+          <a href="#" class="main_btn">Learn More</a>
+        </div>
+
+        <div class="main_img">
+          <img src="image/table.png" />
+        </div>
+      </div>
+      
+    </section>
+    
+    <!--Services-->
+    <div class="bannerTop">
+      |<p>Why is the freedom to read important to you? At a time of rising book bans and censorship, Libraria-KS invites teens across Kosovo, Macedonia and Albania to enter our national writing contest exploring this essential right. The grand prize winner will be awarded $500, and 20 additional winners will receive $250 each. Plus, Teen Vogue will publish the grand prize-winning entry in the spring of 2024! Libraria-KS will also publish all winning entries in a special edition of our Teen Voices magazine.<a href="https://www.surveymonkey.com/r/6B9977Y">Enter now!</a> </p>
+      
+    </div>
+
+<!-- from here new---->
+
+		     <div  class="container">
+		<nav class="navbar navbar-expand-lg navbar-light ">
+		  <div class="container-fluid">
+		    <a class="navbar-brand" href="index.php">Online Book Store</a>
+		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		      <span class="navbar-toggler-icon"></span>
+		    </button>
+		    <div class="collapse navbar-collapse" 
+		         id="navbarSupportedContent">
+		      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+		        <li class="nav-item">
+		          <a class="nav-link active" 
+		             aria-current="page" 
+		             href="index.php">Store</a>
+		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link" 
+		             href="#">Contact</a>
+		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link" 
+		             href="#">About</a>
+		        </li>
+		        <li class="nav-item">
+		          <?php if (isset($_SESSION['user_id'])) {?>
+		          	<a class="nav-link" 
+		             href="admin.php">Admin</a>
+		          <?php }else{ ?>
+		          <a class="nav-link" 
+		             href="login.php">Login</a>
+		          <?php } ?>
+
+		        </li>
+		      </ul>
+		    </div>
+		  </div>
+		</nav>
+		<form action="search.php"
+             method="get" 
+             style="width: 100%; max-width: 30rem">
+
+       	<div class="input-group my-5">
+		  <input type="text" 
+		         class="form-control"
+		         name="key" 
+		         placeholder="Search Book..." 
+		         aria-label="Search Book..." 
+		         aria-describedby="basic-addon2">
+
+		  <button class="input-group-text
+		                 btn btn-primary" 
+		          id="basic-addon2">
+		          <img src="img/search.png"
+		               width="20">
+
+		  </button>
+		</div>
+       </form>
+		<div class="d-flex pt-3">
+			<?php if ($books == 0){ ?>
+				<div class="alert alert-warning 
+        	            text-center p-5" 
+        	     role="alert">
+        	     <img src="img/empty.png" 
+        	          width="100">
+        	     <br>
+			    There is no book in the database
+		       </div>
+			<?php }else{ ?>
+			<div class="pdf-list d-flex flex-wrap">
+				<?php foreach ($books as $book) { ?>
+				<div class="card m-1">
+					<img src="uploads/cover/<?=$book['cover']?>"
+					     class="card-img-top">
+					<div class="card-body">
+						<h5 class="card-title">
+							<?=$book['title']?>
+						</h5>
+						<p class="card-text">
+							<i><b>By:
+								<?php foreach($authors as $author){ 
+									if ($author['id'] == $book['author_id']) {
+										echo $author['name'];
+										break;
+									}
+								?>
+
+								<?php } ?>
+							<br></b></i>
+							<?=$book['description']?>
+							<br><i><b>Category:
+								<?php foreach($categories as $category){ 
+									if ($category['id'] == $book['category_id']) {
+										echo $category['name'];
+										break;
+									}
+								?>
+
+								<?php } ?>
+							<br></b></i>
+						</p>
+                       <a href="uploads/files/<?=$book['file']?>"
+                          class="btn btn-success">Open</a>
+
+                        <a href="uploads/files/<?=$book['file']?>"
+                          class="btn btn-primary"
+                          download="<?=$book['title']?>">Download</a>
+					</div>
+				</div>
+				<?php } ?>
+			</div>
+		<?php } ?>
+
+		<div class="category">
+			<!-- List of categories -->
+			<div class="list-group">
+				<?php if ($categories == 0){
+					// do nothing
+				}else{ ?>
+				<a href="#"
+				   class="list-group-item list-group-item-action active">Category</a>
+				   <?php foreach ($categories as $category ) {?>
+				  
+				   <a href="category.php?id=<?=$category['id']?>"
+				      class="list-group-item list-group-item-action">
+				      <?=$category['name']?></a>
+				<?php } } ?>
+			</div>
+
+			<!-- List of authors -->
+			<div class="list-group mt-5">
+				<?php if ($authors == 0){
+					// do nothing
+				}else{ ?>
+				<a href="#"
+				   class="list-group-item list-group-item-action active">Author</a>
+				   <?php foreach ($authors as $author ) {?>
+				  
+				   <a href="author.php?id=<?=$author['id']?>"
+				      class="list-group-item list-group-item-action">
+				      <?=$author['name']?></a>
+				<?php } } ?>
+			</div>
+		</div>
+		</div>
+	</div>
+
+<!--- end new--->
+
+<?php $max_books = 10;
+
+// Initialize a counter to limit the number of iterations
+$counter = 0;
+
+foreach ($books as $book) {
+    // Stop the loop once the counter reaches the maximum limit
+    if ($counter >= $max_books) {
+        break;
+    }
+  }
+    // Increment the counter
+    $counter++;
+    ?>
+    
+       
+    <div class="featured_boks">
+      <h1>Featured Books</h1>
+      <?php if ($books == 0){ ?>
+				<div class="alert alert-warning 
+        	            text-center p-5" 
+        	     role="alert">
+        	     <img src="NEWPHP/img/empty.png" 
+        	          width="100">
+        	     <br>
+			    There is no book in the database
+		       </div>
+			<?php }else{ ?>
+			<div class="pdf-list d-flex flex-wrap">
+				<?php foreach ($books as $book ) { ?>
+				<?php if ($book['recommended'] == 1) { // Check if the book is recommended ?>
+        <div  class="card m-1">
+            <img src="uploads/cover/<?= $book['cover'] ?>" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <?= $book['title'] ?>
+                </h5>
+                <p class="card-text">
+                    <i><b>By:
+                        <?php foreach ($authors as $author) { 
+                            if ($author['id'] == $book['author_id']) {
+                                echo $author['name'];
+                                break;
+                            }
+                        } ?>
+                    </b></i>
+                    <br>
+                    <?= $book['description'] ?>
+                    <br><i><b>Category:
+                        <?php foreach ($categories as $category) { 
+                            if ($category['id'] == $book['category_id']) {
+                                echo $category['name'];
+                                break;
+                            }
+                        } ?>
+                    </b></i>
+                </p>
+                <a href="uploads/files/<?= $book['file'] ?>" class="btn btn-success">Open</a>
+                <a href="uploads/files/<?= $book['file'] ?>" class="btn btn-primary" download="<?= $book['title'] ?>">Download</a>
+            </div>
+        </div>
+    <?php } ?>
+<?php } ?>
+<?php } ?>
+      
+          </div>
+
+
+    </ul>
+</div>
+                      
+<!---Temporary from Library ND-->
+
+    <!--Arrivals-->
+<section id="Arrivals">
+    <div class="arrivals">
+      <h1>New Arrivals</h1>
+
+      <div class="arrivals_box">
+        <div class="arrivals_card">
+          <div class="arrivals_image">
+            <img src="image/arrival_1.jpg" />
+          </div>
+          <div class="arrivals_tag">
+            <p>The Giver</p>
+            <div class="arrivals_icon">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+             
+              <i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <a href="#" class="arrivals_btn">Learn More</a>
+          </div>
+        </div>
+
+        <div class="arrivals_card">
+          <div class="arrivals_image">
+            <img src="image/arrival_2.jpg" />
+          </div>
+          <div class="arrivals_tag">
+            <p>The wright Brothers</p>
+            <div class="arrivals_icon">
+             
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <a href="#" class="arrivals_btn">Learn More</a>
+          </div>
+        </div>
+
+        <div class="arrivals_card">
+          <div class="arrivals_image">
+            <img src="image/arrival_3.jpg" />
+          </div>
+          <div class="arrivals_tag">
+            <p>Radical Gardening</p>
+            <div class="arrivals_icon">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <a href="#" class="arrivals_btn">Learn More</a>
+          </div>
+        </div>
+
+        <div class="arrivals_card">
+          <div class="arrivals_image">
+            <img src="image/arrival_4.jpg" />
+          </div>
+          <div class="arrivals_tag">
+            <p>Red Queen</p>
+            <div class="arrivals_icon">
+              <i class="fa-solid fa-star"></i>
+            
+              <i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <a href="#" class="arrivals_btn">Learn More</a>
+          </div>
+        </div>
+
+        <div class="arrivals_card">
+          <div class="arrivals_image">
+            <img src="image/arrival_5.jpg" />
+          </div>
+          <div class="arrivals_tag">
+            <p>To Kill a Mocking Bird</p>
+            <div class="arrivals_icon">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <a href="#" class="arrivals_btn">Learn More</a>
+          </div>
+        </div>
+
+        <div class="arrivals_card">
+          <div class="arrivals_image">
+            <img src="image/arrival_6.jpg" />
+          </div>
+          <div class="arrivals_tag">
+            <p>Harry Potter </p>
+            <div class="arrivals_icon">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <a href="#" class="arrivals_btn">Learn More</a>
+          </div>
+        </div>
+
+        <div class="arrivals_card">
+          <div class="arrivals_image">
+            <img src="image/arrival_7.jpg" />
+          </div>
+          <div class="arrivals_tag">
+            <p>Heroes of olympus</p>
+            <div class="arrivals_icon">
+           
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <a href="#" class="arrivals_btn">Learn More</a>
+          </div>
+        </div>
+
+        <div class="arrivals_card">
+          <div class="arrivals_image">
+            <img src="image/arrival_8.webp" />
+          </div>
+          <div class="arrivals_tag">
+            <p>Diary Of A Wimpy Kid</p>
+            <div class="arrivals_icon">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+             
+            </div>
+            <a href="#" class="arrivals_btn">Learn More</a>
+          </div>
+        </div>
+
+        <div class="arrivals_card">
+          <div class="arrivals_image">
+            <img src="image/arrival_9.jpg" />
+          </div>
+          <div class="arrivals_tag">
+            <p>Ranger's apprentice</p>
+            <div class="arrivals_icon">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <a href="#" class="arrivals_btn">Learn More</a>
+          </div>
+        </div>
+
+        <div class="arrivals_card">
+          <div class="arrivals_image">
+            <img src="image/arrival_10.jpg" />
+          </div>
+          <div class="arrivals_tag">
+            <p>Percy Jackson</p>
+            <div class="arrivals_icon">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <a href="#" class="arrivals_btn">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+    <!--reviews-->
+    <section id="Reviews">
+      
+
+    <div class="reviews">
+      <h1>Reviews</h1>
+      <div class="">
+     
+        
+      </div>
+      <div class="review_box">
+        <div class="review_card">
+          <i class="fa-solid fa-quote-right"></i>
+          <div class="card_top">
+            <img src="image/review_1.png" />
+          </div>
+          <div class="card">
+            <h2>Ethan</h2>
+            <p>
+              "A bibliophile's paradise!Libraria-KS caters to every
+              taste—impeccable service."
+            </p>
+            <div class="review_icon">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="review_card">
+          <i class="fa-solid fa-quote-right"></i>
+          <div class="card_top">
+            <img src="image/review_2.png" />
+          </div>
+          <div class="card">
+            <h2>Sarah</h2>
+            <p>
+              "Libraria-KS—where books find a home. Exceptional
+              variety,cozy ambiance.This is the best bookshop
+            </p>
+            <div class="review_icon">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+             
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="review_card">
+          <i class="fa-solid fa-quote-right"></i>
+          <div class="card_top">
+            <img src="image/review_3.png" />
+          </div>
+          <div class="card">
+            <h2>Xavier</h2>
+            <p>
+              "This Bookshop delivers joy with every purchase. Impeccable
+              service, diverse collection. A reliable and delightful book
+              haven."
+            </p>
+            <div class="review_icon">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+             
+            </div>
+          </div>
+        </div>
+
+        <div class="review_card">
+          <i class="fa-solid fa-quote-right"></i>
+          <div class="card_top">
+            <img src="image/review_4.png" />
+          </div>
+          <div class="card">
+            <h2>Jessica</h2>
+            <p>
+              "I gotta say their online convenience is unmatched.Swift delivery,secure transactions.An ideal bookstore for bookworms on
+              the go!"
+            </p>
+            <div class="review_icon">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+   
+ <section id="Blog"> 
+    <div class="blog">
+      <h1>Our Blog</h1>
+      <div class="blog_box">
+        <div class="blog_card">
+          <a href="https://libraria-ks.blogspot.com/" target="_blank">
+          <div class="blog_img">
+            <img src="image/blog_1.jpg" />
+          </div>
+          <div class="blog_tag">
+            <h2>Eplore the Ks-Library Blog </h2>
+            <p>
+              Hey there! Our blog is a treasure trove of cool stuff for you to dive into, Find reviews, recommendations and discussions on there.Our blog is a treasure trove of cool stuff for you to dive into. Whether you're into detailed reviews that give you the lowdown, personalized recommendations to match your vibe, or just love joining in on lively discussions, we've got it all. It's more than a blog – it's a place to explore, connect, and be in the know. Come join the fun!
+            </p>
+            <div class="blog_icon">
+              <i class="fa-solid fa-calendar-days"></i>
+              <i class="fa-solid fa-heart"></i>
+            </div>
+          </div>
+        </a>
+        </div>
+
+        <div class="blog_card">
+          <a href="https://libraria-ks.blogspot.com/" target="_blank">
+          <div class="blog_img">
+           
+            <img src="image/blog_2.jpg" />
+          </div>
+          <div class="blog_tag">
+            <h2>Book of the week - "Catherine House" </h2>
+            <p>
+              A gothic-infused debut of literary suspense, set within a secluded, elite university and following a dangerously curious, rebellious undergraduate who uncovers a shocking secret about an exclusive circle of students . . . and the dark truth beneath her school's promise of prestige.
+            </p>
+            <div class="blog_icon">
+              <i class="fa-solid fa-calendar-days"></i>
+              <i class="fa-solid fa-heart"></i>
+            </div>
+            </a>
+          </div>
+       
+        </div>
+
+        <div class="blog_card">
+          <div class="blog_img">
+            <a href="https://libraria-ks.blogspot.com/" target="_blank">
+            <img src="image/blog_3.jpg" />
+          </div>
+          <div class="blog_tag">
+            <h2>Book review : "The Switch"</h2>
+            <p>
+              The Switch follows Leena and her grandmother Eileen who are struggling in their daily lives and in need of a change. So they decide to swap lives, with Eileen trying online dating in London, and Leena going back to her rural home village. This was just the charming and easy read that I needed right now.
+            </p>
+            <div class="blog_icon">
+              <i class="fa-solid fa-calendar-days"></i>
+              <i class="fa-solid fa-heart"></i>
+            </div>
+          </div>
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Updated anchor tag with the external link -->
+ 
+</div>
+</section>
+    <!--Footer-->
+
+    <footer>
+      <div class="footer_main">
+        <div class="tag">
+          <img src="image/NYPL_MainFacadeRev2Cam2.png" />
+          <p>
+            Stay updated on the latest literary events and news. From book
+            launches to literary festivals, our blog keeps you in the loop,
+            ensuring you never miss an opportunity to celebrate your love for
+            literature.
+          </p>
+        </div>
+
+        <form   action="https://formspree.io/f/mnqeagob"
+        method="POST" class="cf">
+          <div class="half left cf">
+            <input type="text" name="name"id="input-name" placeholder="Full Name">
+            <input type="email" name="email" id="input-email" placeholder="Email address">
+            <input type="text" name="subject" id="input-subject" placeholder="Subject">
+          </div>
+          <div class="half right cf">
+            <textarea name="message" type="text" id="input-message" placeholder="Message"></textarea>
+          </div>  
+          <input type="submit" value="Submit" id="input-submit">
+        </form>
+        <!--Email form end-->
+        <div class="tag">
+    <h1 class="follow">Follow Us</h1>
+    <div class="social_link">
+        <i class="fa-brands fa-facebook-f" style="cursor: pointer;" onclick="window.open('https://www.facebook.com/profile.php?id=61554730603792', '_blank')"></i>
+        <i class="fa-brands fa-instagram" style="cursor: pointer;" onclick="window.open('https://www.instagram.com/librariaaaks?utm_source=ig_web_button_share_sheet&igsh=OGQ5ZDc2ODk2ZA==', '_blank')"></i>
+        <i class="fa-brands fa-twitter" style="cursor: pointer;" onclick="window.open('https://twitter.com', '_blank')"></i>
+        <i class="fa-brands fa-linkedin-in" style="cursor: pointer;" onclick="window.open('https://www.linkedin.com/in/libraria-ks-91313a2a7/', '_blank')"></i>
+    </div>
+</div>
+        <div class="tag">
+          <h1>Newsletter</h1>
+          <div class="search_bar">
+            <input type="text" placeholder="You email id here" />
+            <button type="submit">Subscribe</button>
+          </div>
+        </div>
+      </div>
+      
+
+
+	<div class="container">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		  <div class="container-fluid">
+		    <a class="navbar-brand" href="index.php">Online Book Store</a>
+		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		      <span class="navbar-toggler-icon"></span>
+		    </button>
+		    <div class="collapse navbar-collapse" 
+		         id="navbarSupportedContent">
+		      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+		        <li class="nav-item">
+		          <a class="nav-link active" 
+		             aria-current="page" 
+		             href="NEWPHP/indexReal.php">Store</a>
+		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link" 
+		             href="#">Contact</a>
+		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link" 
+		             href="#">About</a>
+		        </li>
+		        <li class="nav-item">
+		          <?php if (isset($_SESSION['user_id'])) {?>
+		          	<a class="nav-link" 
+		             href="NEWPHP/admin.php">Admin</a>
+		          <?php }else{ ?>
+		          <a class="nav-link" 
+		             href="NEWPHP/login.php">Login</a>
+		          <?php } ?>
+
+		        </li>
+		      </ul>
+		    </div>
+		  </div>
+		</nav>
+		<form action="search.php"
+             method="get" 
+             style="width: 100%; max-width: 30rem">
+
+       	<div class="input-group my-5">
+		  <input type="text" 
+		         class="form-control"
+		         name="key" 
+		         placeholder="Search Book..." 
+		         aria-label="Search Book..." 
+		         aria-describedby="basic-addon2">
+
+		  <button class="input-group-text
+		                 btn btn-primary" 
+		          id="basic-addon2">
+		          <img src="NEWPHP/img/search.png"
+		               width="20">
+
+		  </button>
+		</div>
+       </form>
+		<div class="d-flex pt-3">
+			<?php if ($books == 0){ ?>
+				<div class="alert alert-warning 
+        	            text-center p-5" 
+        	     role="alert">
+        	     <img src="NEWPHP/img/empty.png" 
+        	          width="100">
+        	     <br>
+			    There is no book in the database
+		       </div>
+			<?php }else{ ?>
+			<div class="pdf-list d-flex flex-wrap">
+				<?php foreach ($books as $book) { ?>
+				<div class="card m-1">
+					<img src="uploads/cover/<?=$book['cover']?>"
+					     class="card-img-top">
+					<div class="card-body">
+						<h5 class="card-title">
+							<?=$book['title']?>
+						</h5>
+						<p class="card-text">
+							<i><b>By:
+								<?php foreach($authors as $author){ 
+									if ($author['id'] == $book['author_id'] ) {
+										echo $author['name'];
+										break;
+									}
+								?>
+
+								<?php } ?>
+							<br></b></i>
+							<?=$book['description']?>
+							<br><i><b>Category:
+								<?php foreach($categories as $category){ 
+									if ($category['id'] == $book['category_id']) {
+										echo $category['name'];
+										break;
+									}
+								?>
+
+								<?php } ?>
+							<br></b></i>
+						</p>
+                       <a href="uploads/files/<?=$book['file']?>"
+                          class="btn btn-success">Open</a>
+
+                        <a href="uploads/files/<?=$book['file']?>"
+                          class="btn btn-primary"
+                          download="<?=$book['title']?>">Download</a>
+					</div>
+				</div>
+				<?php } ?>
+			</div>
+		<?php } ?>
+
+		<div class="category">
+			<!-- List of categories -->
+			<div class="list-group">
+				<?php if ($categories == 0){
+					// do nothing
+				}else{ ?>
+				<a href="#"
+				   class="list-group-item list-group-item-action active">Category</a>
+				   <?php foreach ($categories as $category ) {?>
+				  
+				   <a href="category.php?id=<?=$category['id']?>"
+				      class="list-group-item list-group-item-action">
+				      <?=$category['name']?></a>
+				<?php } } ?>
+			</div>
+
+			<!-- List of authors -->
+			<div class="list-group mt-5">
+				<?php if ($authors == 0){
+					// do nothing
+				}else{ ?>
+				<a href="#"
+				   class="list-group-item list-group-item-action active">Author</a>
+				   <?php foreach ($authors as $author ) {?>
+				  
+				   <a href="author.php?id=<?=$author['id']?>"
+				      class="list-group-item list-group-item-action">
+				      <?=$author['name']?></a>
+				<?php } } ?>
+			</div>
+		</div>
+		</div>
+	</div>
+  <form action="NEWPHP/search.php" method="get" style="width: 100%; max-width: 30rem;">
+    <div class="input-group my-5">
+        <input type="text" 
+               class="form-control"
+               name="key" 
+               placeholder="Search Book..." 
+               aria-label="Search Book..." 
+               aria-describedby="basic-addon2">
+
+        <button class="input-group-text btn btn-primary" id="basic-addon2">
+            <img src="NEWPHP/img/search.png" width="20" alt="Search Icon">
+        </button>
+    </div>
+</form>
+
+
+      <p class="end">
+        Copyright reserved © 2023
+      </p>
+    </footer>
+   <!---makes the shop button work-->
+   <script>document.getElementById("EmailS").onclick = function () {
+    location.href = "emailSignUp.html";
+};</script>
+   <script>document.getElementById("shopId").onclick = function () {
+      location.href = "https://libraria-ks-shop.netlify.app/";
+  };</script>
+    <script>// When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
+      window.onscroll = function() {scrollFunction()};
+      
+      function scrollFunction() {
+        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+          document.getElementById("navbar").style.padding = "25px 8px";
+          document.getElementById("logo").style.scale = "-30%";
+        } 
+      
+        else {
+          document.getElementById("navbar").style.padding = "50px 10px";
+          document.getElementById("logo").style.fontSize = "35px";
+        }
+      }</script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Get all links with the class 'scroll-link'
+        const scrollLinks = document.querySelectorAll('.nav-items a');
+    
+        // Attach click event listener to each link
+        scrollLinks.forEach(link => {
+          link.addEventListener('click', function (e) {
+            e.preventDefault();
+    
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+    
+            if (targetElement) {
+              // Scroll to the target element smoothly
+              targetElement.scrollIntoView({
+                behavior: 'smooth'
+              });
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
